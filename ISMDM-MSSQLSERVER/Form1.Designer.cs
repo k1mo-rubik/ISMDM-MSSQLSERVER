@@ -101,10 +101,7 @@
             this.стоимостьуслугиDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.услугиBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabPage9 = new System.Windows.Forms.TabPage();
-            this.dataGridView9 = new System.Windows.Forms.DataGridView();
-            this.кодспециализацииDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.специализациияBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.кодуслугиDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.услугиBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.услугиспециализацииBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.сотрудникиBindingSource4 = new System.Windows.Forms.BindingSource(this.components);
@@ -124,6 +121,15 @@
             this.клиентыBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.услугиBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.сотрудникиBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
+            this.mdmdbDataSet1 = new ISMDM_MSSQLSERVER.mdmdbDataSet();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.услугиспециализацииBindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.специализациияBindingSource3 = new System.Windows.Forms.BindingSource(this.components);
+            this.специализациияBindingSource4 = new System.Windows.Forms.BindingSource(this.components);
+            this.услугиBindingSource4 = new System.Windows.Forms.BindingSource(this.components);
+            this.кодDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.кодспециализацииDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.кодуслугиDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewComboBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.mdmdbDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mdmdbDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.аккаунтыBindingSource)).BeginInit();
@@ -161,7 +167,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.услугиBindingSource)).BeginInit();
             this.tabPage9.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.специализациияBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.услугиBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.услугиспециализацииBindingSource1)).BeginInit();
@@ -174,6 +179,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.клиентыBindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.услугиBindingSource2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.сотрудникиBindingSource3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mdmdbDataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.услугиспециализацииBindingSource2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.специализациияBindingSource3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.специализациияBindingSource4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.услугиBindingSource4)).BeginInit();
             this.SuspendLayout();
             // 
             // mdmdbDataSet
@@ -744,7 +755,7 @@
             // 
             // tabPage9
             // 
-            this.tabPage9.Controls.Add(this.dataGridView9);
+            this.tabPage9.Controls.Add(this.dataGridView2);
             this.tabPage9.Location = new System.Drawing.Point(4, 22);
             this.tabPage9.Name = "tabPage9";
             this.tabPage9.Padding = new System.Windows.Forms.Padding(3);
@@ -753,45 +764,10 @@
             this.tabPage9.Text = "Услуги специализации";
             this.tabPage9.UseVisualStyleBackColor = true;
             // 
-            // dataGridView9
-            // 
-            this.dataGridView9.AutoGenerateColumns = false;
-            this.dataGridView9.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView9.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.кодспециализацииDataGridViewTextBoxColumn1,
-            this.кодуслугиDataGridViewTextBoxColumn2});
-            this.dataGridView9.DataSource = this.услугиспециализацииBindingSource1;
-            this.dataGridView9.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView9.Name = "dataGridView9";
-            this.dataGridView9.Size = new System.Drawing.Size(633, 398);
-            this.dataGridView9.TabIndex = 0;
-            // 
-            // кодспециализацииDataGridViewTextBoxColumn1
-            // 
-            this.кодспециализацииDataGridViewTextBoxColumn1.DataPropertyName = "Код_специализации";
-            this.кодспециализацииDataGridViewTextBoxColumn1.DataSource = this.специализациияBindingSource1;
-            this.кодспециализацииDataGridViewTextBoxColumn1.DisplayMember = "Наименование_специализации";
-            this.кодспециализацииDataGridViewTextBoxColumn1.HeaderText = "Код_специализации";
-            this.кодспециализацииDataGridViewTextBoxColumn1.Name = "кодспециализацииDataGridViewTextBoxColumn1";
-            this.кодспециализацииDataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.кодспециализацииDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.кодспециализацииDataGridViewTextBoxColumn1.ValueMember = "Код_специализации";
-            // 
             // специализациияBindingSource1
             // 
             this.специализациияBindingSource1.DataMember = "Специализациия";
             this.специализациияBindingSource1.DataSource = this.mdmdbDataSetBindingSource;
-            // 
-            // кодуслугиDataGridViewTextBoxColumn2
-            // 
-            this.кодуслугиDataGridViewTextBoxColumn2.DataPropertyName = "Код_услуги";
-            this.кодуслугиDataGridViewTextBoxColumn2.DataSource = this.услугиBindingSource1;
-            this.кодуслугиDataGridViewTextBoxColumn2.DisplayMember = "Наименование_услуги";
-            this.кодуслугиDataGridViewTextBoxColumn2.HeaderText = "Код_услуги";
-            this.кодуслугиDataGridViewTextBoxColumn2.Name = "кодуслугиDataGridViewTextBoxColumn2";
-            this.кодуслугиDataGridViewTextBoxColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.кодуслугиDataGridViewTextBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.кодуслугиDataGridViewTextBoxColumn2.ValueMember = "Код_услуги";
             // 
             // услугиBindingSource1
             // 
@@ -888,6 +864,73 @@
             this.сотрудникиBindingSource3.DataMember = "Сотрудники";
             this.сотрудникиBindingSource3.DataSource = this.mdmdbDataSetBindingSource;
             // 
+            // mdmdbDataSet1
+            // 
+            this.mdmdbDataSet1.DataSetName = "mdmdbDataSet";
+            this.mdmdbDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.AutoGenerateColumns = false;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.кодDataGridViewTextBoxColumn,
+            this.кодспециализацииDataGridViewTextBoxColumn1,
+            this.кодуслугиDataGridViewTextBoxColumn2});
+            this.dataGridView2.DataSource = this.услугиспециализацииBindingSource2;
+            this.dataGridView2.Location = new System.Drawing.Point(-4, 0);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.Size = new System.Drawing.Size(959, 423);
+            this.dataGridView2.TabIndex = 0;
+            // 
+            // услугиспециализацииBindingSource2
+            // 
+            this.услугиспециализацииBindingSource2.DataMember = "Услуги_специализации";
+            this.услугиспециализацииBindingSource2.DataSource = this.mdmdbDataSetBindingSource;
+            // 
+            // специализациияBindingSource3
+            // 
+            this.специализациияBindingSource3.DataMember = "Специализациия";
+            this.специализациияBindingSource3.DataSource = this.mdmdbDataSetBindingSource;
+            // 
+            // специализациияBindingSource4
+            // 
+            this.специализациияBindingSource4.DataMember = "Специализациия";
+            this.специализациияBindingSource4.DataSource = this.mdmdbDataSetBindingSource;
+            // 
+            // услугиBindingSource4
+            // 
+            this.услугиBindingSource4.DataMember = "Услуги";
+            this.услугиBindingSource4.DataSource = this.mdmdbDataSetBindingSource;
+            // 
+            // кодDataGridViewTextBoxColumn
+            // 
+            this.кодDataGridViewTextBoxColumn.DataPropertyName = "Код";
+            this.кодDataGridViewTextBoxColumn.HeaderText = "Код";
+            this.кодDataGridViewTextBoxColumn.Name = "кодDataGridViewTextBoxColumn";
+            // 
+            // кодспециализацииDataGridViewTextBoxColumn1
+            // 
+            this.кодспециализацииDataGridViewTextBoxColumn1.DataPropertyName = "Код_специализации";
+            this.кодспециализацииDataGridViewTextBoxColumn1.DataSource = this.специализациияBindingSource4;
+            this.кодспециализацииDataGridViewTextBoxColumn1.DisplayMember = "Наименование_специализации";
+            this.кодспециализацииDataGridViewTextBoxColumn1.HeaderText = "Код_специализации";
+            this.кодспециализацииDataGridViewTextBoxColumn1.Name = "кодспециализацииDataGridViewTextBoxColumn1";
+            this.кодспециализацииDataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.кодспециализацииDataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.кодспециализацииDataGridViewTextBoxColumn1.ValueMember = "Код_специализации";
+            // 
+            // кодуслугиDataGridViewTextBoxColumn2
+            // 
+            this.кодуслугиDataGridViewTextBoxColumn2.DataPropertyName = "Код_услуги";
+            this.кодуслугиDataGridViewTextBoxColumn2.DataSource = this.услугиBindingSource4;
+            this.кодуслугиDataGridViewTextBoxColumn2.DisplayMember = "Наименование_услуги";
+            this.кодуслугиDataGridViewTextBoxColumn2.HeaderText = "Код_услуги";
+            this.кодуслугиDataGridViewTextBoxColumn2.Name = "кодуслугиDataGridViewTextBoxColumn2";
+            this.кодуслугиDataGridViewTextBoxColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.кодуслугиDataGridViewTextBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.кодуслугиDataGridViewTextBoxColumn2.ValueMember = "Код_услуги";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -936,7 +979,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.услугиBindingSource)).EndInit();
             this.tabPage9.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.специализациияBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.услугиBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.услугиспециализацииBindingSource1)).EndInit();
@@ -949,6 +991,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.клиентыBindingSource2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.услугиBindingSource2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.сотрудникиBindingSource3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.mdmdbDataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.услугиспециализацииBindingSource2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.специализациияBindingSource3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.специализациияBindingSource4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.услугиBindingSource4)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -976,7 +1024,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn элпочтаDataGridViewTextBoxColumn;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.BindingSource записиBindingSource;
-        private mdmdbDataSetTableAdapters.ЗаписиTableAdapter записиTableAdapter;
+        public mdmdbDataSetTableAdapters.ЗаписиTableAdapter записиTableAdapter;
         private System.Windows.Forms.TabPage tabPage4;
         public System.Windows.Forms.DataGridView dataGridViewEmpl;
         private System.Windows.Forms.BindingSource сотрудникиBindingSource;
@@ -1012,14 +1060,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn кодграфикаDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn графикDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource графикBindingSource2;
-        public System.Windows.Forms.DataGridView dataGridView9;
         private System.Windows.Forms.BindingSource услугиспециализацииBindingSource1;
         public System.Windows.Forms.DataGridView dataGridView3;
         private System.Windows.Forms.BindingSource записиBindingSource2;
         private System.Windows.Forms.BindingSource специализациияBindingSource1;
         private System.Windows.Forms.BindingSource услугиBindingSource1;
-        private System.Windows.Forms.DataGridViewComboBoxColumn кодспециализацииDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewComboBoxColumn кодуслугиDataGridViewTextBoxColumn2;
         private System.Windows.Forms.BindingSource графикBindingSource3;
         private System.Windows.Forms.BindingSource сотрудникиBindingSource1;
         private System.Windows.Forms.BindingSource клиентыBindingSource1;
@@ -1049,6 +1094,15 @@
         private System.Windows.Forms.BindingSource сотрудникиBindingSource3;
         private System.Windows.Forms.BindingSource аккаунтыBindingSource2;
         private System.Windows.Forms.BindingSource сотрудникиBindingSource4;
+        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn кодDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewComboBoxColumn кодспециализацииDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.BindingSource специализациияBindingSource4;
+        private System.Windows.Forms.DataGridViewComboBoxColumn кодуслугиDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.BindingSource услугиBindingSource4;
+        private System.Windows.Forms.BindingSource услугиспециализацииBindingSource2;
+        private mdmdbDataSet mdmdbDataSet1;
+        private System.Windows.Forms.BindingSource специализациияBindingSource3;
     }
 }
 

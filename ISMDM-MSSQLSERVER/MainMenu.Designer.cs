@@ -203,7 +203,7 @@
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.pictureBox1.Location = new System.Drawing.Point(40, 27);
+            this.pictureBox1.Location = new System.Drawing.Point(31, 27);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(100, 58);
             this.pictureBox1.TabIndex = 0;
@@ -283,7 +283,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MainMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form2";
+            this.Text = " ";
             this.Load += new System.EventHandler(this.MainMenu_Load);
             this.pnlParentNav.ResumeLayout(false);
             this.panel3.ResumeLayout(false);

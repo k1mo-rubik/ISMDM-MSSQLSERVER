@@ -13,7 +13,10 @@ namespace ISMDM_MSSQLSERVER
     public partial class Item : Form
     {
         Client client;
-        ScheduleRepo scheduleRepo = Program.mainMenu.scheduleRepo;
+
+        //ScheduleRepo scheduleRepo = Program.mainMenu.scheduleRepo;
+        SpecializationRepo specializationRepo = Program.mainMenu.specializationRepo;
+
         Employee employee;
         public Item()
         {
@@ -40,8 +43,11 @@ namespace ISMDM_MSSQLSERVER
             tb_name.Text = fio;
             tb_spec.Text = employee.Телефон;
 
-            string currSched = scheduleRepo.GetScheduleByCode(employee.Специализация);
-            tb_spec2.Text = currSched;
+            //string currSched = scheduleRepo.GetScheduleByCode(employee.Специализация);
+            //tb_spec2.Text = currSched;
+
+            string currSpec = specializationRepo.GetSpecName(employee.Специализация);
+            tb_spec2.Text = currSpec;
         }
 
         private void Item_Load(object sender, EventArgs e)

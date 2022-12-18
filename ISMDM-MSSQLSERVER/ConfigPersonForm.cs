@@ -14,8 +14,8 @@ namespace ISMDM_MSSQLSERVER
     {
         Client client;
         Employee employee;
-        SpecializationRepo specializationRepo = new SpecializationRepo();
-        ScheduleRepo scheduleRepo = new ScheduleRepo();
+        ScheduleRepo scheduleRepo = Program.mainMenu.scheduleRepo;
+        SpecializationRepo specializationRepo = Program.mainMenu.specializationRepo;
         public ConfigPersonForm()
         {
             InitializeComponent();
@@ -52,7 +52,7 @@ namespace ISMDM_MSSQLSERVER
             
             comboBox1.Visible = true;
             string currSpec = specializationRepo.GetSpecName(employee.Специализация);
-            string currSched = scheduleRepo.GetScheduleByCode(employee.Специализация);
+            string currSched = scheduleRepo.GetScheduleByCode(employee.Код_графика);
 
             
             foreach (var sched in Program.mainMenu.schedList)

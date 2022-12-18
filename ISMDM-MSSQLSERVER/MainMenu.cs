@@ -23,7 +23,14 @@ namespace ISMDM_MSSQLSERVER
         public List<Reserve> reserveList = new List<Reserve>();
         public List<Specialization> specList = new List<Specialization>();
         public List<Schedule> schedList = new List<Schedule>();
+        public List<ServicesSpec> servSpecList = new List<ServicesSpec>();
         public ScheduleRepo scheduleRepo;
+        public SpecializationRepo specializationRepo;
+        public ClientRepo clientRepo;
+        public EmployeeRepo employeeRepo;
+        public ServiceSpecRepo serviceSpecRepo;
+        public ServiceRepo serviceRepo;
+
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
 
         private static extern IntPtr CreateRoundRectRgn(
@@ -54,16 +61,20 @@ namespace ISMDM_MSSQLSERVER
 
             ds = Program.form1.mdmdbDataSet;
 
-            ClientRepo clientRepo = new ClientRepo();
-            EmployeeRepo employeeRepo = new EmployeeRepo();
-            SpecializationRepo specializationRepo = new SpecializationRepo();
+             clientRepo = new ClientRepo();
+             employeeRepo = new EmployeeRepo();
+            specializationRepo = new SpecializationRepo();
             scheduleRepo = new ScheduleRepo();
+            serviceRepo = new ServiceRepo();
+            serviceSpecRepo = new ServiceSpecRepo();
 
 
             clientList = clientRepo.GetClients(ds);
             empList = employeeRepo.GetEmployees(ds);
             specList = specializationRepo.GetSpecializations(ds);
             schedList = scheduleRepo.GetSchedules(ds);
+            servSpecList = serviceSpecRepo.GetServicesSpec(ds);
+            servList = serviceRepo.GetServices(ds);
         }
 
 
@@ -180,6 +191,44 @@ namespace ISMDM_MSSQLSERVER
             this.PnlFormLoader.Controls.Add(currForm);
             currForm.Show();
         }
+        // создать запись
+        public void addReserve(Reserve reserve)
+        {
+            DataRow dr = Program.form1.mdmdbDataSet.Записи.NewRow();
+            // последняя строка таблицы записей
+            int lastId = Program.form1.mdmdbDataSet.Записи.Rows[Program.form1.mdmdbDataSet.Записи.Rows.Count - 1].Field<int>("Код_записи");
+
+            //dr["Код_записи"] = ;
+            //Program.form1.записиTableAdapter.
+            //check last id in table Записи and add 1
+            //int lastId = 0;
+            //foreach (DataRow dr in Program.form1.mdmdbDataSet.Записи.Rows)
+            //{
+            //    if (Convert.ToInt32(dr["Код_записи"]) > lastId)
+            //    {
+            //        lastId = Convert.ToInt32(dr["Код_записи"]);
+            //    }
+            //}
+
+            dr["Код_записи"] = lastId + 1;
+            dr["Код_клиента"] = reserve.Код_клиента;
+            dr["Код_сотрудника"] = reserve.Код_сотрудника;
+            dr["Код_услуги"] = reserve.Код_услуги;
+            dr["Дата_время_записи"] = reserve.Дата_время_записи;
+
+            Program.form1.mdmdbDataSet.Записи.Rows.Add(dr);
+            //Program.form1.dataGridViewClient.Rows[currRow].Cells[1].Value = reserve.Фамилия;
+
+
+
+
+
+            Program.form1.записиTableAdapter.Update(Program.form1.mdmdbDataSet.Записи);
+
+
+            MessageBox.Show("Сохранено");
+        }
+
 
         internal void updatePerson(Client client)
         {
@@ -248,7 +297,16 @@ namespace ISMDM_MSSQLSERVER
             return clientList;
         }
 
+        internal string[] GetClientsFIO()
+        {
+            string[] fio = new string[clientList.Count];
+            for (int i = 0; i < clientList.Count; i++)
+            {
+                fio[i] = clientList[i].Фамилия + " " + clientList[i].Имя + " " + clientList[i].Отчество;
+            }
+            return fio;
         }
+    }
     // Repository Employee Class
     public class EmployeeRepo
     {
@@ -274,6 +332,29 @@ namespace ISMDM_MSSQLSERVER
 
             }
             return empList;
+        }
+
+        internal string[] GetEmployeesFIO()
+        {
+            string[] fio = new string[empList.Count];
+            for (int i = 0; i < empList.Count; i++)
+            {
+                fio[i] = empList[i].Фамилия + " " + empList[i].Имя + " " + empList[i].Отчество;
+            }
+            return fio;
+        }
+
+        internal int GetSpecCode(int empCode)
+        {
+            int specCode = 0;
+            foreach (Employee emp in empList)
+            {
+                if (emp.Код_сотрудника == empCode)
+                {
+                    specCode = emp.Специализация;
+                }
+            }
+            return specCode;
         }
     }
 
@@ -307,6 +388,8 @@ namespace ISMDM_MSSQLSERVER
             }
             return "";
         }
+
+       
     }
 
 
@@ -340,11 +423,105 @@ namespace ISMDM_MSSQLSERVER
             return "";
         }
 
+        internal void AddReserve(Reserve reserve)
+        {
+            
+        }
+    }
+    //repository услуги_специализации
+    public class ServiceSpecRepo
+    {
+        public List<ServicesSpec> servSpecList = new List<ServicesSpec>();
+
+        public List<ServicesSpec> GetServicesSpec(DataSet ds)
+        {
+            foreach (DataRow row in ds.Tables["Услуги_специализации"].Rows)
+            {
+                //fill servSpecList
+                servSpecList.Add(new ServicesSpec(
+                    int.Parse(row["Код"].ToString()),
+                    int.Parse(row["Код_специализации"].ToString()),
+                    int.Parse(row["Код_услуги"].ToString())
+                    ));
+
+            }
+            return servSpecList;
+        }
+        // get services by spec code
+     
+        internal List<int> GetServicesBySpec(int specCode)
+        {
+            List<int> currServList = new List<int>();
+            foreach (ServicesSpec serv in servSpecList)
+            {
+                if (serv.Код_специализации == specCode)
+                {
+                    currServList.Add(serv.Код_услуги);
+
+                }
+            }
+            return currServList;
+        }
     }
 
 
+    //class услуги_специализации
+    public class ServicesSpec
+    {
+        public int Код { get; set; }
+        public int Код_услуги { get; set; }
+        public int Код_специализации { get; set; }
 
+        public ServicesSpec(int код, int код_специализации, int код_услуги)
+        {
+            Код = код;
+            Код_услуги = код_услуги;
+            Код_специализации = код_специализации;
+        }
+    }
 
+    //repository services class
+    public class ServiceRepo
+    {
+        public List<Services> servList = new List<Services>();
+
+        public List<Services> GetServices(DataSet ds)
+        {
+            foreach (DataRow row in ds.Tables["Услуги"].Rows)
+            {
+                //fill servList
+                servList.Add(new Services(
+                    int.Parse(row["Код_услуги"].ToString()),
+                    row["Наименование_услуги"].ToString(),
+                    row["Стоимость_услуги"].ToString())
+                    );
+
+            }
+            return servList;
+        }
+        public string GetServiceName(int id)
+        {
+            foreach (Services serv in servList)
+            {
+                if (serv.Код_услуги == id)
+                {
+                    return serv.Наименование_услуги;
+                }
+            }
+            return "";
+        }
+        public string GetServicePrice(int id)
+        {
+            foreach (Services serv in servList)
+            {
+                if (serv.Код_услуги == id)
+                {
+                    return serv.Стоимость_услуги;
+                }
+            }
+            return null;
+        }
+    }
 
     // make client class
     public class Client
@@ -394,6 +571,17 @@ namespace ISMDM_MSSQLSERVER
     // make services class
     public class Services
     {
+        private int v1;
+        private string v2;
+        private string v3;
+
+        public Services(int код_услуги, string наименование_услуги, string стоимость_услуги)
+        {
+            this.Код_услуги = код_услуги;
+            this.Наименование_услуги = наименование_услуги;
+            this.Стоимость_услуги = стоимость_услуги;
+        }
+
         public int Код_услуги { get; set; }
         public string Наименование_услуги { get; set; }
         public string Стоимость_услуги { get; set; }
@@ -402,9 +590,9 @@ namespace ISMDM_MSSQLSERVER
     public class Reserve
     {
         public int Код_записи { get; set; }
-        public string Код_клиента { get; set; }
-        public string Код_сотрудника { get; set; }
-        public string Код_услуги { get; set; }
+        public int Код_клиента { get; set; }
+        public int Код_сотрудника { get; set; }
+        public int Код_услуги { get; set; }
         public string Дата_время_записи { get; set; }
     }
     // класс группа пользователей

@@ -55,6 +55,7 @@ namespace ISMDM_MSSQLSERVER
             группа_пользователейTableAdapter.Update(mdmdbDataSet.Группа_пользователей);
             специализациияTableAdapter.Update(mdmdbDataSet.Специализациия);
             услугиTableAdapter.Update(mdmdbDataSet.Услуги);
+            услуги_специализацииTableAdapter.Update(mdmdbDataSet.Услуги_специализации);
 
 
             MessageBox.Show("Все изменения сохранены");
