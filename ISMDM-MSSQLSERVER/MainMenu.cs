@@ -19,7 +19,7 @@ namespace ISMDM_MSSQLSERVER
         DataSet ds;
         public List<Client> clientList = new List<Client>();
         public List<Employee> empList = new List<Employee>();
-        public List<Services> servList = new List<Services>();
+        public List<Service> servList = new List<Service>();
         public List<Reserve> reserveList = new List<Reserve>();
         public List<Specialization> specList = new List<Specialization>();
         public List<Schedule> schedList = new List<Schedule>();
@@ -30,6 +30,7 @@ namespace ISMDM_MSSQLSERVER
         public EmployeeRepo employeeRepo;
         public ServiceSpecRepo serviceSpecRepo;
         public ServiceRepo serviceRepo;
+        public ReserveRepo reserveRepo;
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
 
@@ -61,12 +62,13 @@ namespace ISMDM_MSSQLSERVER
 
             ds = Program.form1.mdmdbDataSet;
 
-             clientRepo = new ClientRepo();
-             employeeRepo = new EmployeeRepo();
+            clientRepo = new ClientRepo();
+            employeeRepo = new EmployeeRepo();
             specializationRepo = new SpecializationRepo();
             scheduleRepo = new ScheduleRepo();
             serviceRepo = new ServiceRepo();
             serviceSpecRepo = new ServiceSpecRepo();
+            reserveRepo = new ReserveRepo();
 
 
             clientList = clientRepo.GetClients(ds);
@@ -75,10 +77,11 @@ namespace ISMDM_MSSQLSERVER
             schedList = scheduleRepo.GetSchedules(ds);
             servSpecList = serviceSpecRepo.GetServicesSpec(ds);
             servList = serviceRepo.GetServices(ds);
+            reserveList = reserveRepo.GetReserves(ds);
         }
 
 
-        private void btnNav_Click(object sender, EventArgs e)
+            private void btnNav_Click(object sender, EventArgs e)
         {
             Button b = (Button)sender;
 
@@ -93,7 +96,7 @@ namespace ISMDM_MSSQLSERVER
             this.PnlFormLoader.Controls.Clear();
             var currForm = new Form();
 
-            if (b.Tag == "zap") { currPage = 1; currForm = new ReserveForm() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true }; }
+            if (b.Tag == "zap") { currPage = 1; currForm = new ReservForm() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true }; }
             else if (b.Tag == "cli") { currPage = 2; currForm = new ClientForm() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true }; }
             else if (b.Tag == "sot") { currPage = 3; currForm = new EmplForm() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true }; }
             else if (b.Tag == "usl") { currPage = 4; currForm = new ClientForm() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true }; }
@@ -162,7 +165,7 @@ namespace ISMDM_MSSQLSERVER
             {
                 case 1:
                     {
-                       
+                        currForm = new CreateReserveForm() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
                         break;
                     }
                 case 2:
@@ -265,6 +268,25 @@ namespace ISMDM_MSSQLSERVER
 
             MessageBox.Show("Обновлено");
         }
+
+        internal void mmConfigureReserv(int reserveId)
+        {
+            //find reserv by id
+            Reserve reserve = reserveRepo.GetReserveById(reserveId);
+
+            
+            this.PnlFormLoader.Controls.Clear();
+
+            currPage = 7;
+            var currForm = new CreateReserveForm(reserve) { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+
+            currForm.FormBorderStyle = FormBorderStyle.None;
+            this.PnlFormLoader.Controls.Add(currForm);
+
+
+
+            currForm.Show();
+        }
     }
 
     // Repository Client Class
@@ -297,6 +319,18 @@ namespace ISMDM_MSSQLSERVER
             return clientList;
         }
 
+        internal Client GetClientById(object clientId)
+        {
+            foreach (Client client in clientList)
+            {
+                if (client.Код_клиента == (int)clientId)
+                {
+                    return client;
+                }
+            }
+            return null;
+        }
+
         internal string[] GetClientsFIO()
         {
             string[] fio = new string[clientList.Count];
@@ -306,6 +340,20 @@ namespace ISMDM_MSSQLSERVER
             }
             return fio;
         }
+
+        internal string GetClientsFIOById(int код_клиента)
+        {
+            string fio = "";
+            for (int i = 0; i < clientList.Count; i++)
+            {
+                if (clientList[i].Код_клиента == код_клиента)
+                {
+                    fio = clientList[i].Фамилия + " " + clientList[i].Имя + " " + clientList[i].Отчество;
+                }
+            }
+            return fio;
+        }
+        
     }
     // Repository Employee Class
     public class EmployeeRepo
@@ -334,12 +382,37 @@ namespace ISMDM_MSSQLSERVER
             return empList;
         }
 
+        internal Employee GetEmployeeById(int код_сотрудника)
+        {
+            foreach (Employee employee in empList)
+            {
+                if (employee.Код_сотрудника == код_сотрудника)
+                {
+                    return employee;
+                }
+            }
+            return null;
+        }
+
         internal string[] GetEmployeesFIO()
         {
             string[] fio = new string[empList.Count];
             for (int i = 0; i < empList.Count; i++)
             {
                 fio[i] = empList[i].Фамилия + " " + empList[i].Имя + " " + empList[i].Отчество;
+            }
+            return fio;
+        }
+
+        internal string GetEmployeesFIOById(int код_сотрудника)
+        {
+            string fio = "";
+            for (int i = 0; i < empList.Count; i++)
+            {
+                if (empList[i].Код_сотрудника == код_сотрудника)
+                {
+                    fio = empList[i].Фамилия + " " + empList[i].Имя + " " + empList[i].Отчество;
+                }
             }
             return fio;
         }
@@ -357,6 +430,46 @@ namespace ISMDM_MSSQLSERVER
             return specCode;
         }
     }
+
+    //Repository Записи class
+    public class ReserveRepo
+    {
+        public List<Reserve> reservList = new List<Reserve>();
+
+        public List<Reserve> GetReserves(DataSet ds)
+        {
+            foreach (DataRow row in ds.Tables["Записи"].Rows)
+            {
+                //fill recordList
+                reservList.Add(new Reserve(
+                    int.Parse(row["Код_записи"].ToString()),
+                    int.Parse(row["Код_сотрудника"].ToString()),
+                    row["Дата_время_записи"].ToString(),
+                    int.Parse(row["Код_клиента"].ToString()),
+                    int.Parse(row["Код_услуги"].ToString())
+                    ));
+
+
+
+            }
+            return reservList;
+        }
+
+        internal Reserve GetReserveById(int reserveId)
+        {
+            Reserve reserve = new Reserve();
+            foreach (Reserve r in reservList)
+            {
+                if (r.Код_записи == reserveId)
+                {
+                    reserve = r;
+                }
+            }
+            return reserve;
+        }
+    }
+
+
 
     //Repository specialization class
     public class SpecializationRepo
@@ -483,14 +596,14 @@ namespace ISMDM_MSSQLSERVER
     //repository services class
     public class ServiceRepo
     {
-        public List<Services> servList = new List<Services>();
+        public List<Service> servList = new List<Service>();
 
-        public List<Services> GetServices(DataSet ds)
+        public List<Service> GetServices(DataSet ds)
         {
             foreach (DataRow row in ds.Tables["Услуги"].Rows)
             {
                 //fill servList
-                servList.Add(new Services(
+                servList.Add(new Service(
                     int.Parse(row["Код_услуги"].ToString()),
                     row["Наименование_услуги"].ToString(),
                     row["Стоимость_услуги"].ToString())
@@ -501,7 +614,7 @@ namespace ISMDM_MSSQLSERVER
         }
         public string GetServiceName(int id)
         {
-            foreach (Services serv in servList)
+            foreach (Service serv in servList)
             {
                 if (serv.Код_услуги == id)
                 {
@@ -512,11 +625,23 @@ namespace ISMDM_MSSQLSERVER
         }
         public string GetServicePrice(int id)
         {
-            foreach (Services serv in servList)
+            foreach (Service serv in servList)
             {
                 if (serv.Код_услуги == id)
                 {
                     return serv.Стоимость_услуги;
+                }
+            }
+            return null;
+        }
+
+        internal Service GetServiceById(int код_услуги)
+        {
+            foreach (Service serv in servList)
+            {
+                if (serv.Код_услуги == код_услуги)
+                {
+                    return serv;
                 }
             }
             return null;
@@ -569,13 +694,11 @@ namespace ISMDM_MSSQLSERVER
         public int Специализация { get; set; }
     }
     // make services class
-    public class Services
+    public class Service
     {
-        private int v1;
-        private string v2;
-        private string v3;
+       
 
-        public Services(int код_услуги, string наименование_услуги, string стоимость_услуги)
+        public Service(int код_услуги, string наименование_услуги, string стоимость_услуги)
         {
             this.Код_услуги = код_услуги;
             this.Наименование_услуги = наименование_услуги;
@@ -589,6 +712,19 @@ namespace ISMDM_MSSQLSERVER
     // make reserve class
     public class Reserve
     {
+        public Reserve()
+        {
+        }
+
+        //constructor
+        public Reserve(int Код_записи,  int Код_сотрудника, string Дата_время_записи,int Код_клиента, int Код_услуги )
+        {
+            this.Код_записи = Код_записи;
+            this.Код_клиента = Код_клиента;
+            this.Код_сотрудника = Код_сотрудника;
+            this.Код_услуги = Код_услуги;
+            this.Дата_время_записи = Дата_время_записи;
+        }
         public int Код_записи { get; set; }
         public int Код_клиента { get; set; }
         public int Код_сотрудника { get; set; }

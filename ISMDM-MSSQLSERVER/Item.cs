@@ -28,9 +28,9 @@ namespace ISMDM_MSSQLSERVER
             InitializeComponent();
             string fio = client.Фамилия + " " + client.Имя + " " + client.Отчество;
             
-            tb_name.Text = fio;
-            tb_spec.Text = client.Телефон;
-            tb_spec2.Text = client.Эл_почта;
+            l_name.Text = fio;
+            l_spec.Text = client.Телефон;
+            l_spec2.Text = client.Эл_почта;
             
         }
 
@@ -40,14 +40,14 @@ namespace ISMDM_MSSQLSERVER
             InitializeComponent();
             string fio = employee.Фамилия + " " + employee.Имя + " " + employee.Отчество;
 
-            tb_name.Text = fio;
-            tb_spec.Text = employee.Телефон;
+            l_name.Text = fio;
+            l_spec.Text = employee.Телефон;
 
             //string currSched = scheduleRepo.GetScheduleByCode(employee.Специализация);
-            //tb_spec2.Text = currSched;
+            //l_spec2.Text = currSched;
 
             string currSpec = specializationRepo.GetSpecName(employee.Специализация);
-            tb_spec2.Text = currSpec;
+            l_spec2.Text = currSpec;
         }
 
         private void Item_Load(object sender, EventArgs e)

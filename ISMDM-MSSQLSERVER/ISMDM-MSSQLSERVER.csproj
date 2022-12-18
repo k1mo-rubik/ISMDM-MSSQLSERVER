@@ -53,6 +53,18 @@
       <DependentUpon>ClientForm.cs</DependentUpon>
     </Compile>
     <Compile Include="DataBase.cs" />
+    <Compile Include="ItemReserv.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ItemReserv.Designer.cs">
+      <DependentUpon>ItemReserv.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReservForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReservForm.Designer.cs">
+      <DependentUpon>ReservForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Item.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -108,14 +120,20 @@
     <Compile Include="EmplForm.Designer.cs">
       <DependentUpon>EmplForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ReserveForm.cs">
+    <Compile Include="CreateReserveForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ReserveForm.Designer.cs">
-      <DependentUpon>ReserveForm.cs</DependentUpon>
+    <Compile Include="CreateReserveForm.Designer.cs">
+      <DependentUpon>CreateReserveForm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="ClientForm.resx">
       <DependentUpon>ClientForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemReserv.resx">
+      <DependentUpon>ItemReserv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReservForm.resx">
+      <DependentUpon>ReservForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Item.resx">
       <DependentUpon>Item.cs</DependentUpon>
@@ -151,8 +169,8 @@
     <EmbeddedResource Include="EmplForm.resx">
       <DependentUpon>EmplForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ReserveForm.resx">
-      <DependentUpon>ReserveForm.cs</DependentUpon>
+    <EmbeddedResource Include="CreateReserveForm.resx">
+      <DependentUpon>CreateReserveForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="mdmdbDataSet.xsc">
       <DependentUpon>mdmdbDataSet.xsd</DependentUpon>

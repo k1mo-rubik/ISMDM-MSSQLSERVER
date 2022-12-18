@@ -28,42 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tb_name = new System.Windows.Forms.TextBox();
-            this.tb_spec = new System.Windows.Forms.TextBox();
-            this.tb_spec2 = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.l_name = new System.Windows.Forms.Label();
+            this.l_spec = new System.Windows.Forms.Label();
+            this.l_spec2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // tb_name
-            // 
-            this.tb_name.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tb_name.Location = new System.Drawing.Point(104, 27);
-            this.tb_name.Multiline = true;
-            this.tb_name.Name = "tb_name";
-            this.tb_name.Size = new System.Drawing.Size(270, 25);
-            this.tb_name.TabIndex = 1;
-            this.tb_name.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // tb_spec
-            // 
-            this.tb_spec.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tb_spec.Location = new System.Drawing.Point(384, 27);
-            this.tb_spec.Multiline = true;
-            this.tb_spec.Name = "tb_spec";
-            this.tb_spec.Size = new System.Drawing.Size(180, 25);
-            this.tb_spec.TabIndex = 2;
-            this.tb_spec.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // tb_spec2
-            // 
-            this.tb_spec2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tb_spec2.Location = new System.Drawing.Point(570, 27);
-            this.tb_spec2.Multiline = true;
-            this.tb_spec2.Name = "tb_spec2";
-            this.tb_spec2.Size = new System.Drawing.Size(122, 25);
-            this.tb_spec2.TabIndex = 3;
-            this.tb_spec2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // pictureBox1
             // 
@@ -77,15 +47,45 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // l_name
+            // 
+            this.l_name.AutoSize = true;
+            this.l_name.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.l_name.Location = new System.Drawing.Point(124, 35);
+            this.l_name.Name = "l_name";
+            this.l_name.Size = new System.Drawing.Size(44, 16);
+            this.l_name.TabIndex = 4;
+            this.l_name.Text = "label1";
+            // 
+            // l_spec
+            // 
+            this.l_spec.AutoSize = true;
+            this.l_spec.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.l_spec.Location = new System.Drawing.Point(380, 35);
+            this.l_spec.Name = "l_spec";
+            this.l_spec.Size = new System.Drawing.Size(44, 16);
+            this.l_spec.TabIndex = 5;
+            this.l_spec.Text = "label1";
+            // 
+            // l_spec2
+            // 
+            this.l_spec2.AutoSize = true;
+            this.l_spec2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.l_spec2.Location = new System.Drawing.Point(563, 35);
+            this.l_spec2.Name = "l_spec2";
+            this.l_spec2.Size = new System.Drawing.Size(44, 16);
+            this.l_spec2.TabIndex = 6;
+            this.l_spec2.Text = "label1";
+            // 
             // Item
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(693, 77);
-            this.Controls.Add(this.tb_spec2);
-            this.Controls.Add(this.tb_spec);
-            this.Controls.Add(this.tb_name);
+            this.Controls.Add(this.l_spec2);
+            this.Controls.Add(this.l_spec);
+            this.Controls.Add(this.l_name);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Item";
@@ -103,8 +103,8 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.TextBox tb_name;
-        private System.Windows.Forms.TextBox tb_spec;
-        private System.Windows.Forms.TextBox tb_spec2;
+        private System.Windows.Forms.Label l_name;
+        private System.Windows.Forms.Label l_spec;
+        private System.Windows.Forms.Label l_spec2;
     }
 }

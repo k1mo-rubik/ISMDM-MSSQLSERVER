@@ -33,6 +33,7 @@
             // 
             // pn_empl
             // 
+            this.pn_empl.AutoScroll = true;
             this.pn_empl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pn_empl.Location = new System.Drawing.Point(0, 0);
             this.pn_empl.Name = "pn_empl";
