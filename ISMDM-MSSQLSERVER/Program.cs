@@ -15,7 +15,8 @@ namespace ISMDM_MSSQLSERVER
         /// 
         public static MainMenu mainMenu;
         public static Form1 form1;
-        public static ClientForm clientForm;
+        //public static ClientForm clientForm;
+        public static LoginForm loginForm;
 
         [STAThread]
         static void Main()
@@ -25,6 +26,7 @@ namespace ISMDM_MSSQLSERVER
             Application.SetCompatibleTextRenderingDefault(false);
             Program.mainMenu = new MainMenu();
             Program.form1 = new Form1();
+            Program.loginForm = new LoginForm();
             //Program.clientForm = new ClientForm();
             Application.Run(Program.form1);
             //Application.Run(mainMenu);

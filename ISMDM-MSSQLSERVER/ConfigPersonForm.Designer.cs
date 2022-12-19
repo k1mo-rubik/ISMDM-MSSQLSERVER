@@ -60,39 +60,47 @@
             // 
             // tb_name
             // 
+            this.tb_name.BackColor = System.Drawing.Color.White;
             this.tb_name.Location = new System.Drawing.Point(222, 179);
             this.tb_name.Multiline = true;
             this.tb_name.Name = "tb_name";
             this.tb_name.Size = new System.Drawing.Size(270, 25);
             this.tb_name.TabIndex = 3;
             this.tb_name.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tb_name.TextChanged += new System.EventHandler(this.fio_TextChanged);
             // 
             // tb_surname
             // 
+            this.tb_surname.BackColor = System.Drawing.Color.White;
             this.tb_surname.Location = new System.Drawing.Point(222, 135);
             this.tb_surname.Multiline = true;
             this.tb_surname.Name = "tb_surname";
             this.tb_surname.Size = new System.Drawing.Size(270, 25);
             this.tb_surname.TabIndex = 2;
             this.tb_surname.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tb_surname.TextChanged += new System.EventHandler(this.fio_TextChanged);
             // 
             // tb_patr
             // 
+            this.tb_patr.BackColor = System.Drawing.Color.White;
             this.tb_patr.Location = new System.Drawing.Point(222, 225);
             this.tb_patr.Multiline = true;
             this.tb_patr.Name = "tb_patr";
             this.tb_patr.Size = new System.Drawing.Size(270, 25);
             this.tb_patr.TabIndex = 4;
             this.tb_patr.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tb_patr.TextChanged += new System.EventHandler(this.fio_TextChanged);
             // 
             // tb_phone
             // 
+            this.tb_phone.BackColor = System.Drawing.Color.White;
             this.tb_phone.Location = new System.Drawing.Point(222, 273);
             this.tb_phone.Multiline = true;
             this.tb_phone.Name = "tb_phone";
             this.tb_phone.Size = new System.Drawing.Size(270, 25);
             this.tb_phone.TabIndex = 5;
             this.tb_phone.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tb_phone.TextChanged += new System.EventHandler(this.tb_phone_TextChanged);
             // 
             // label1
             // 
@@ -149,6 +157,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(270, 21);
             this.comboBox1.TabIndex = 14;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // comboBox2
             // 
@@ -178,12 +187,14 @@
             // 
             // tb_email
             // 
+            this.tb_email.BackColor = System.Drawing.Color.White;
             this.tb_email.Location = new System.Drawing.Point(222, 317);
             this.tb_email.Multiline = true;
             this.tb_email.Name = "tb_email";
             this.tb_email.Size = new System.Drawing.Size(270, 25);
             this.tb_email.TabIndex = 18;
             this.tb_email.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tb_email.TextChanged += new System.EventHandler(this.tb_email_TextChanged);
             // 
             // button1
             // 

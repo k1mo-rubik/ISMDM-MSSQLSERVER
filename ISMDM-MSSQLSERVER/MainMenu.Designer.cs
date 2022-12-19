@@ -32,7 +32,6 @@
             this.pnlParentNav = new System.Windows.Forms.Panel();
             this.pnlNav = new System.Windows.Forms.Panel();
             this.btnReport = new System.Windows.Forms.Button();
-            this.btnServices = new System.Windows.Forms.Button();
             this.btnEmployee = new System.Windows.Forms.Button();
             this.btnClients = new System.Windows.Forms.Button();
             this.btnRecord = new System.Windows.Forms.Button();
@@ -48,6 +47,7 @@
             this.клиентыBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.клиентыTableAdapter = new ISMDM_MSSQLSERVER.mdmdbDataSetTableAdapters.КлиентыTableAdapter();
             this.button2 = new System.Windows.Forms.Button();
+            this.btnServices = new System.Windows.Forms.Button();
             this.pnlParentNav.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -59,9 +59,9 @@
             // pnlParentNav
             // 
             this.pnlParentNav.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(155)))), ((int)(((byte)(171)))));
+            this.pnlParentNav.Controls.Add(this.btnServices);
             this.pnlParentNav.Controls.Add(this.pnlNav);
             this.pnlParentNav.Controls.Add(this.btnReport);
-            this.pnlParentNav.Controls.Add(this.btnServices);
             this.pnlParentNav.Controls.Add(this.btnEmployee);
             this.pnlParentNav.Controls.Add(this.btnClients);
             this.pnlParentNav.Controls.Add(this.btnRecord);
@@ -89,7 +89,7 @@
             this.btnReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReport.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReport.ForeColor = System.Drawing.Color.White;
-            this.btnReport.Location = new System.Drawing.Point(0, 388);
+            this.btnReport.Location = new System.Drawing.Point(0, 327);
             this.btnReport.Name = "btnReport";
             this.btnReport.Size = new System.Drawing.Size(162, 61);
             this.btnReport.TabIndex = 7;
@@ -97,22 +97,6 @@
             this.btnReport.Text = "Отчёты";
             this.btnReport.UseVisualStyleBackColor = true;
             this.btnReport.Click += new System.EventHandler(this.btnNav_Click);
-            // 
-            // btnServices
-            // 
-            this.btnServices.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnServices.FlatAppearance.BorderSize = 0;
-            this.btnServices.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnServices.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnServices.ForeColor = System.Drawing.Color.White;
-            this.btnServices.Location = new System.Drawing.Point(0, 327);
-            this.btnServices.Name = "btnServices";
-            this.btnServices.Size = new System.Drawing.Size(162, 61);
-            this.btnServices.TabIndex = 6;
-            this.btnServices.Tag = "usl";
-            this.btnServices.Text = "Услуги";
-            this.btnServices.UseVisualStyleBackColor = true;
-            this.btnServices.Click += new System.EventHandler(this.btnNav_Click);
             // 
             // btnEmployee
             // 
@@ -194,18 +178,20 @@
             this.labelWorker.AutoSize = true;
             this.labelWorker.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelWorker.ForeColor = System.Drawing.Color.White;
-            this.labelWorker.Location = new System.Drawing.Point(36, 100);
+            this.labelWorker.Location = new System.Drawing.Point(27, 100);
             this.labelWorker.Name = "labelWorker";
-            this.labelWorker.Size = new System.Drawing.Size(95, 20);
+            this.labelWorker.Size = new System.Drawing.Size(121, 20);
             this.labelWorker.TabIndex = 1;
-            this.labelWorker.Text = "НАДПИСЬ";
+            this.labelWorker.Text = "Добрый день";
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = global::ISMDM_MSSQLSERVER.Properties.Resources.man;
             this.pictureBox1.Location = new System.Drawing.Point(31, 27);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(100, 58);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
@@ -269,6 +255,22 @@
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.btn_add);
             // 
+            // btnServices
+            // 
+            this.btnServices.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnServices.FlatAppearance.BorderSize = 0;
+            this.btnServices.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnServices.Font = new System.Drawing.Font("Nirmala UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnServices.ForeColor = System.Drawing.Color.White;
+            this.btnServices.Location = new System.Drawing.Point(0, 388);
+            this.btnServices.Name = "btnServices";
+            this.btnServices.Size = new System.Drawing.Size(162, 61);
+            this.btnServices.TabIndex = 9;
+            this.btnServices.Tag = "usl";
+            this.btnServices.Text = "Услуги";
+            this.btnServices.UseVisualStyleBackColor = true;
+            this.btnServices.Visible = false;
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -300,7 +302,6 @@
         #endregion
         private System.Windows.Forms.Panel pnlParentNav;
         private System.Windows.Forms.Button btnReport;
-        private System.Windows.Forms.Button btnServices;
         private System.Windows.Forms.Button btnEmployee;
         private System.Windows.Forms.Button btnClients;
         private System.Windows.Forms.Button btnRecord;
@@ -317,5 +318,6 @@
         private System.Windows.Forms.BindingSource клиентыBindingSource;
         private mdmdbDataSetTableAdapters.КлиентыTableAdapter клиентыTableAdapter;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnServices;
     }
 }

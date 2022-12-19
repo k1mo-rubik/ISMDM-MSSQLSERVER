@@ -65,8 +65,10 @@ namespace ISMDM_MSSQLSERVER
 
         private void Form1_Shown(object sender, EventArgs e)
         {
-            //this.Hide();
+            this.Hide();
             Program.mainMenu.Show();
+            Program.mainMenu.Hide();
+            Program.loginForm.Show();
             //Program.mainMenu.Hide();
             //Program.clientForm.Show();
         }

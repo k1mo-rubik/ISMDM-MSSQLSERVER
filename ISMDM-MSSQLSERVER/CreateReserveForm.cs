@@ -136,6 +136,7 @@ namespace ISMDM_MSSQLSERVER
         {
             Program.form1.mdmdbDataSet.Записи.Rows.Find(reserve.Код_записи).Delete();
             Program.form1.записиTableAdapter.Update(Program.form1.mdmdbDataSet.Записи);
+            Program.mainMenu.UpdateLists();
             MessageBox.Show("deleted");
         }
     }

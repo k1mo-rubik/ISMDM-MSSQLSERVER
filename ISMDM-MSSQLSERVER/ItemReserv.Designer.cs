@@ -38,7 +38,7 @@
             // 
             this.l_client.AutoSize = true;
             this.l_client.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.l_client.Location = new System.Drawing.Point(26, 31);
+            this.l_client.Location = new System.Drawing.Point(0, 31);
             this.l_client.Name = "l_client";
             this.l_client.Size = new System.Drawing.Size(44, 16);
             this.l_client.TabIndex = 1;
@@ -48,7 +48,7 @@
             // 
             this.l_service.AutoSize = true;
             this.l_service.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.l_service.Location = new System.Drawing.Point(209, 31);
+            this.l_service.Location = new System.Drawing.Point(233, 31);
             this.l_service.Name = "l_service";
             this.l_service.Size = new System.Drawing.Size(44, 16);
             this.l_service.TabIndex = 2;
@@ -58,7 +58,7 @@
             // 
             this.l_emp.AutoSize = true;
             this.l_emp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.l_emp.Location = new System.Drawing.Point(338, 31);
+            this.l_emp.Location = new System.Drawing.Point(383, 31);
             this.l_emp.Name = "l_emp";
             this.l_emp.Size = new System.Drawing.Size(44, 16);
             this.l_emp.TabIndex = 3;
@@ -68,7 +68,7 @@
             // 
             this.l_date.AutoSize = true;
             this.l_date.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.l_date.Location = new System.Drawing.Point(504, 31);
+            this.l_date.Location = new System.Drawing.Point(587, 31);
             this.l_date.Name = "l_date";
             this.l_date.Size = new System.Drawing.Size(44, 16);
             this.l_date.TabIndex = 4;
@@ -79,7 +79,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(693, 77);
+            this.ClientSize = new System.Drawing.Size(705, 77);
             this.Controls.Add(this.l_date);
             this.Controls.Add(this.l_emp);
             this.Controls.Add(this.l_service);

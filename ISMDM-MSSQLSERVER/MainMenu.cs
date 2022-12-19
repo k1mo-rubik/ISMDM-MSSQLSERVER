@@ -24,6 +24,7 @@ namespace ISMDM_MSSQLSERVER
         public List<Specialization> specList = new List<Specialization>();
         public List<Schedule> schedList = new List<Schedule>();
         public List<ServicesSpec> servSpecList = new List<ServicesSpec>();
+        public List<Account> accountList = new List<Account>();
         public ScheduleRepo scheduleRepo;
         public SpecializationRepo specializationRepo;
         public ClientRepo clientRepo;
@@ -31,6 +32,7 @@ namespace ISMDM_MSSQLSERVER
         public ServiceSpecRepo serviceSpecRepo;
         public ServiceRepo serviceRepo;
         public ReserveRepo reserveRepo;
+        public AccountRepo accountRepo;
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
 
@@ -69,6 +71,23 @@ namespace ISMDM_MSSQLSERVER
             serviceRepo = new ServiceRepo();
             serviceSpecRepo = new ServiceSpecRepo();
             reserveRepo = new ReserveRepo();
+            accountRepo = new AccountRepo();
+
+
+            UpdateLists();
+        }
+
+        public void UpdateLists()
+        {
+            clientList.Clear();
+            empList.Clear();
+            servList.Clear();
+            reserveList.Clear();
+            specList.Clear();
+            schedList.Clear();
+            servSpecList.Clear();
+            accountList.Clear();
+
 
 
             clientList = clientRepo.GetClients(ds);
@@ -78,10 +97,10 @@ namespace ISMDM_MSSQLSERVER
             servSpecList = serviceSpecRepo.GetServicesSpec(ds);
             servList = serviceRepo.GetServices(ds);
             reserveList = reserveRepo.GetReserves(ds);
+            accountList = accountRepo.GetAccounts(ds);
         }
 
-
-            private void btnNav_Click(object sender, EventArgs e)
+        private void btnNav_Click(object sender, EventArgs e)
         {
             Button b = (Button)sender;
 
@@ -99,8 +118,8 @@ namespace ISMDM_MSSQLSERVER
             if (b.Tag == "zap") { currPage = 1; currForm = new ReservForm() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true }; }
             else if (b.Tag == "cli") { currPage = 2; currForm = new ClientForm() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true }; }
             else if (b.Tag == "sot") { currPage = 3; currForm = new EmplForm() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true }; }
-            else if (b.Tag == "usl") { currPage = 4; currForm = new ClientForm() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true }; }
-            else if (b.Tag == "otc") { currPage = 5; currForm = new ClientForm() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true }; }
+            //else if (b.Tag == "usl") { currPage = 4; currForm = new ClientForm() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true }; }
+            else if (b.Tag == "otc") { currPage = 5; currForm = new RepForm() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true }; }
 
             
             currForm.FormBorderStyle = FormBorderStyle.None;
@@ -170,12 +189,12 @@ namespace ISMDM_MSSQLSERVER
                     }
                 case 2:
                     {
-                        currForm = new ConfigPersonForm() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+                        currForm = new ConfigPersonForm(true) { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
                         break;
                     }
                 case 3:
                     {
-                       currForm = new ConfigPersonForm() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
+                       currForm = new ConfigPersonForm(false) { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
                         break;
                     }
                 case 4:
@@ -228,11 +247,58 @@ namespace ISMDM_MSSQLSERVER
 
             Program.form1.записиTableAdapter.Update(Program.form1.mdmdbDataSet.Записи);
 
+            UpdateLists();
 
             MessageBox.Show("Сохранено");
         }
 
+        internal void createPerson(Client client)
+        {
 
+            DataRow dr = Program.form1.mdmdbDataSet.Клиенты.NewRow();
+
+            int lastId = Program.form1.mdmdbDataSet.Клиенты.Rows[Program.form1.mdmdbDataSet.Клиенты.Rows.Count - 1].Field<int>("Код_клиента");
+
+
+            dr["Код_клиента"] = lastId+1;
+            dr["Фамилия"] = client.Фамилия;
+            dr["Имя"] = client.Имя;
+            dr["Отчество"] = client.Отчество;
+            dr["Телефон"] = client.Телефон;
+            dr["Эл_почта"] = client.Эл_почта;
+            
+            Program.form1.mdmdbDataSet.Клиенты.Rows.Add(dr);
+            Program.form1.клиентыTableAdapter.Update(Program.form1.mdmdbDataSet.Клиенты);
+
+            UpdateLists();
+            MessageBox.Show("Сохранено");
+
+
+        }
+        internal void createPerson(Employee employee)
+        {
+
+            DataRow dr = Program.form1.mdmdbDataSet.Сотрудники.NewRow();
+
+            int lastId = Program.form1.mdmdbDataSet.Сотрудники.Rows[Program.form1.mdmdbDataSet.Сотрудники.Rows.Count - 1].Field<int>("Код_сотрудника");
+
+
+            dr["Код_сотрудника"] = lastId+1;
+            dr["Фамилия"] = employee.Фамилия;
+            dr["Имя"] = employee.Имя;
+            dr["Отчество"] = employee.Отчество;
+            dr["Телефон"] = employee.Телефон;
+            dr["Код_графика"] = employee.Код_графика;
+            dr["Специализация"] = employee.Специализация;
+
+            
+            Program.form1.mdmdbDataSet.Сотрудники.Rows.Add(dr);
+            Program.form1.сотрудникиTableAdapter.Update(Program.form1.mdmdbDataSet.Сотрудники);
+
+            UpdateLists();
+            MessageBox.Show("Сохранено");
+
+        }
         internal void updatePerson(Client client)
         {
             
@@ -246,7 +312,7 @@ namespace ISMDM_MSSQLSERVER
 
             Program.form1.клиентыTableAdapter.Update(Program.form1.mdmdbDataSet.Клиенты);
 
-
+            UpdateLists();
             MessageBox.Show("Обновлено");
 
         }
@@ -265,7 +331,7 @@ namespace ISMDM_MSSQLSERVER
 
             Program.form1.сотрудникиTableAdapter.Update(Program.form1.mdmdbDataSet.Сотрудники);
 
-
+            UpdateLists();
             MessageBox.Show("Обновлено");
         }
 
@@ -288,6 +354,50 @@ namespace ISMDM_MSSQLSERVER
             currForm.Show();
         }
     }
+    //repository Аккаунты class
+    public class AccountRepo
+    {
+        public List<Account> accountList = new List<Account>();
+
+        public AccountRepo()
+        {
+            //this.account = new Аккаунты();
+        }
+
+
+        public List<Account> GetAccounts(DataSet ds)
+        {
+            foreach (DataRow dr in ds.Tables[0].Rows)
+            {
+                Account account = new Account();
+                account.Код_аккаунта = Convert.ToInt32(dr["Код_аккаунта"]);
+                account.Логин = dr["Логин"].ToString();
+                account.Пароль = dr["Пароль"].ToString();
+                account.Код_сотрудника = Convert.ToInt32(dr["Код_сотрудника"]);
+                account.Группа_пользователей = Convert.ToInt32(dr["Группа_пользователей"]);
+                accountList.Add(account);
+            }
+            return accountList;
+        }
+
+
+        public Account LoginAccount(string login, string pass)
+        {
+            // check if login and pass are correct
+            foreach (Account account in accountList)
+            {
+                if (account.Логин == login && account.Пароль == pass)
+                {
+                    return account;
+                }
+               
+            }
+            return null;
+        }
+
+    }
+
+
 
     // Repository Client Class
     public class ClientRepo
@@ -469,8 +579,7 @@ namespace ISMDM_MSSQLSERVER
         }
     }
 
-
-
+    
     //Repository specialization class
     public class SpecializationRepo
     {
@@ -661,6 +770,9 @@ namespace ISMDM_MSSQLSERVER
             this.Телефон = Телефон;
             this.Эл_почта = Эл_почта;
         }
+        public Client()
+        {
+        }
 
         public int Код_клиента { get; set; }
         public string Фамилия { get; set; }
@@ -684,6 +796,11 @@ namespace ISMDM_MSSQLSERVER
 
             this.Код_графика = (int)(Код_графика == null? 0 : Код_графика);
             this.Специализация = (int)(Специализация == null ? 0 : Специализация);
+        }
+
+        public Employee()
+        {
+     
         }
         public int Код_сотрудника { get; set; }
         public string Фамилия { get; set; }
@@ -744,8 +861,8 @@ namespace ISMDM_MSSQLSERVER
         public int Код_аккаунта { get; set; }
         public string Логин { get; set; }
         public string Пароль { get; set; }
-        public string Код_сотрудника { get; set; }
-        public string Группа_пользователей { get; set; }
+        public int Код_сотрудника { get; set; }
+        public int Группа_пользователей { get; set; }
     }
 
     //класс график работы
@@ -760,9 +877,6 @@ namespace ISMDM_MSSQLSERVER
 
         public int Код_графика { get; set; }
         public string График { get; set; }
-        //public string День_недели { get; set; }
-        //public string Время_начала { get; set; }
-        //public string Время_окончания { get; set; }
     }
     // класс специализация
     public class Specialization
