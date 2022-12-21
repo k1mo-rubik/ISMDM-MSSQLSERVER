@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
-
+using ISMDM_MSSQLSERVER.Classes;
 
 namespace ISMDM_MSSQLSERVER
 {
@@ -58,19 +58,19 @@ namespace ISMDM_MSSQLSERVER
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Account acc = Program.mainMenu.accountRepo.LoginAccount(login, password);
-           if (acc != null)
+            Account acc = Program.mainForm.accRepo.LoginAccount(login, password);
+            if (acc != null)
             {
-                if (acc.Группа_пользователей == 2)
+                if (acc.Код_группы == 1)
                 {
                     this.Hide();
-                    Program.mainMenu.Show();
+                    Program.mainForm.Show();
                 }
-                else if (acc.Группа_пользователей == 1)
+                else if (acc.Код_группы == 0)
                 {
                     this.Hide();
-                    Program.mainMenu.Show();
-                    Program.form1.Show();
+                    Program.mainForm.Show();
+                    Program.adminForm.Show();
                 }
             }
             else

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ISMDM_MSSQLSERVER.Forms;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,7 +15,8 @@ namespace ISMDM_MSSQLSERVER
         /// 
         /// 
         public static MainMenu mainMenu;
-        public static Form1 form1;
+        public static MainForm mainForm;
+        public static AdminForm adminForm;
         //public static ClientForm clientForm;
         public static LoginForm loginForm;
 
@@ -25,10 +27,13 @@ namespace ISMDM_MSSQLSERVER
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Program.mainMenu = new MainMenu();
-            Program.form1 = new Form1();
+            
+            Program.mainForm = new MainForm();
+            Program.adminForm = new AdminForm();
             Program.loginForm = new LoginForm();
+            
             //Program.clientForm = new ClientForm();
-            Application.Run(Program.form1);
+            Application.Run(Program.adminForm);
             //Application.Run(mainMenu);
         }
     }

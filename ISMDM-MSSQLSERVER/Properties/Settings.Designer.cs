@@ -32,5 +32,15 @@ namespace ISMDM_MSSQLSERVER.Properties {
                 return ((string)(this["mdmdbConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\bdmdm;Initial Catalog=guseva;Integrated Security=True")]
+        public string gusevaConnectionString {
+            get {
+                return ((string)(this["gusevaConnectionString"]));
+            }
+        }
     }
 }

@@ -46,115 +46,59 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClientForm.cs">
+    <Compile Include="Classes\Repository.cs" />
+    <Compile Include="Classes\Entity.cs" />
+    <Compile Include="Forms\AdminForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ClientForm.Designer.cs">
-      <DependentUpon>ClientForm.cs</DependentUpon>
+    <Compile Include="Forms\AdminForm.Designer.cs">
+      <DependentUpon>AdminForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="DataBase.cs" />
-    <Compile Include="ItemReserv.cs">
+    <Compile Include="Forms\PersonForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ItemReserv.Designer.cs">
-      <DependentUpon>ItemReserv.cs</DependentUpon>
+    <Compile Include="Forms\PersonForm.Designer.cs">
+      <DependentUpon>PersonForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ReservForm.cs">
+    <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ReservForm.Designer.cs">
-      <DependentUpon>ReservForm.cs</DependentUpon>
+    <Compile Include="Forms\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Item.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Item.Designer.cs">
-      <DependentUpon>Item.cs</DependentUpon>
-    </Compile>
-    <Compile Include="LoginForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="LoginForm.Designer.cs">
-      <DependentUpon>LoginForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="RepForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="RepForm.Designer.cs">
-      <DependentUpon>RepForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ConfigPersonForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ConfigPersonForm.Designer.cs">
-      <DependentUpon>ConfigPersonForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ServForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ServForm.Designer.cs">
-      <DependentUpon>ServForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MainMenu.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MainMenu.Designer.cs">
-      <DependentUpon>MainMenu.cs</DependentUpon>
-    </Compile>
-    <Compile Include="mdmdbDataSet.Designer.cs">
+    <Compile Include="gusevaDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>mdmdbDataSet.xsd</DependentUpon>
+      <DependentUpon>gusevaDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Item.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Item.Designer.cs">
+      <DependentUpon>Item.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="EmplForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="EmplForm.Designer.cs">
-      <DependentUpon>EmplForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CreateReserveForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CreateReserveForm.Designer.cs">
-      <DependentUpon>CreateReserveForm.cs</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="ClientForm.resx">
-      <DependentUpon>ClientForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\AdminForm.resx">
+      <DependentUpon>AdminForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ItemReserv.resx">
-      <DependentUpon>ItemReserv.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ReservForm.resx">
-      <DependentUpon>ReservForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Item.resx">
+    <EmbeddedResource Include="Forms\Item.resx">
       <DependentUpon>Item.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LoginForm.resx">
+    <EmbeddedResource Include="Forms\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="RepForm.resx">
-      <DependentUpon>RepForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ConfigPersonForm.resx">
-      <DependentUpon>ConfigPersonForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ServForm.resx">
-      <DependentUpon>ServForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MainMenu.resx">
-      <DependentUpon>MainMenu.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\PersonForm.resx">
+      <DependentUpon>PersonForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -166,22 +110,16 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="EmplForm.resx">
-      <DependentUpon>EmplForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CreateReserveForm.resx">
-      <DependentUpon>CreateReserveForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <None Include="mdmdbDataSet.xsc">
-      <DependentUpon>mdmdbDataSet.xsd</DependentUpon>
+    <None Include="gusevaDataSet.xsc">
+      <DependentUpon>gusevaDataSet.xsd</DependentUpon>
     </None>
-    <None Include="mdmdbDataSet.xsd">
+    <None Include="gusevaDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>mdmdbDataSet.Designer.cs</LastGenOutput>
+      <LastGenOutput>gusevaDataSet.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="mdmdbDataSet.xss">
-      <DependentUpon>mdmdbDataSet.xsd</DependentUpon>
+    <None Include="gusevaDataSet.xss">
+      <DependentUpon>gusevaDataSet.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -240,6 +178,30 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\people-outline.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\person-add-outline.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Vector.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\document-outline.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\file-tray-full-outline.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Group 24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\plus-xxl.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\plus-64.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
