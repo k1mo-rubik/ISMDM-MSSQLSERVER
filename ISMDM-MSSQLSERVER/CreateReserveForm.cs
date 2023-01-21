@@ -36,32 +36,16 @@ namespace ISMDM_MSSQLSERVER
             btn_del.Visible = true;
             LoadData();
             var employee = employeeRepo.GetEmployeeById(reserve.Код_сотрудника);
-            //choose client in combobox by Код_клиента
             cb_client.SelectedIndex = cb_client.FindStringExact(clientRepo.GetClientsFIOById(reserve.Код_клиента));
             cb_emp.SelectedIndex = cb_emp.FindStringExact(specializationRepo.GetSpecName(employee.Специализация) + " | " + employeeRepo.GetEmployeesFIOById(reserve.Код_сотрудника));
             cb_serv.SelectedIndex = cb_serv.FindStringExact(serviceRepo.GetServiceById(reserve.Код_услуги).Наименование_услуги);
 
 
 
-
-
-            // split Дата_и_время into date and time
-
             string[] currDate = reserve.Дата_время_записи.Split('|');
             currDate[1] = currDate[1].Trim();
             dtp_date.Value = DateTime.Parse(currDate[0]);
             cb_time.SelectedIndex = cb_time.FindStringExact(currDate[1]);
-
-
-
-            //// get client by id
-            //Client client = clientRepo.GetClientById(reserve.Код_клиента);
-            //// get employee by id
-            //Employee employee = employeeRepo.GetEmployeeById(reserve.Код_сотрудника);
-            //// get service by id
-            //Service service = serviceRepo.GetServiceById(reserve.Код_услуги);
-
-            //
 
 
         }
